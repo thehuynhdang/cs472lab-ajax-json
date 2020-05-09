@@ -1,0 +1,107 @@
+<div id="books-list">
+	<div class="container" id="pageheader">
+		<h2 class="text-info" style="float:left;">Books in our Collection</h2>
+		<div style="float:right;"><button type="button" class="btn btn-outline-success" id="btnAddNewBook" data-toggle="modal" data-target="#addNewBookModel">Add New Book</button></div>
+	</div>
+	<div class="container">
+		<div id="divBooksList" style="font-size: 1em">
+           <table id="booksTable" class="table table-striped">
+               <thead>
+	               <tr>
+		               <th scope="col">#</th>
+		               <th scope="col">ISBN</th>
+		               <th scope="col">Book Title</th>
+		               <th scope="col">Overdue Fee</th>
+		               <th scope="col">Publisher</th>
+		               <th scope="col">Date Published</th>
+	               </tr>
+               </thead>
+               <tbody id="tbodyBooks">
+	               <tr><td colspan="6"><img alt="loading" src="images/ajax-loader.gif">&nbsp;Loading...</td></tr>
+           	   </tbody>
+           </table>
+       </div>
+	</div>
+	
+	 <!-- Modal for Book Form -->
+    <div class="modal fade" id="addNewBookModel" tabindex="-1" role="dialog" aria-labelledby="elibraryAppBookFormModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="elibraryAppBookFormModalCenterTitle" style="font-size: 2em; color: #32a5e7;">New Book Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div style="padding-bottom:2em;">                        
+                        <span id="modalBookFormAlertMessageBox" style="display:none;float:none;" class="alert alert-success">
+                            <strong id="modalBookFormStrongAlertText">Book successfully added!</strong>
+                        </span>
+                    </div>
+                    <div>
+                        <span><b>Note:</b> Form fields marked with asterisk (*) are required.</span>
+                    </div>
+                    <br/>
+                    <form id="bookForm" action="" method="post">
+                        <fieldset>             
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="title">*Book Title</label>                            
+                                        <input id="title" name="title" type="text" class="form-control"
+                                            value="" required autofocus>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="isbn">*ISBN</label>                           
+                                        <input id="isbn" name="isbn" type="text" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="overdueFee">*Overdue Fee per day</label>                            
+                                        <input id="overdueFee" name="overdueFee" type="text" class="form-control"
+                                            aria-describedby="overdueFeeHelp" placeholder="0.00"
+                                            pattern="^[+-]?[0-9]{1,3}(?:,?[0-9]{3})*(?:\.[0-9]{2})?$"
+                                            value="0.00" required>
+                                        <small id="overdueFeeHelp" class="form-text text-muted">Enter a valid decimal amount; in dollars and cents; no comma (e.g. 1.99)</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="publisher">*Publisher</label>                            
+                                        <input id="publisher" name="publisher" type="text" class="form-control"
+                                            value="" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="datePublished">*Date Published</label>                            
+                                        <input id="datePublished" name="datePublished" type="date" class="form-control" value="" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-outline-warning" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button id="modalBtnReset" type="reset" class="btn btn-secondary">Clear</button>
+                                    <button id="modalBtnSaveBook" type="submit" class="btn btn-primary" >Save Book Data</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">                    
+                </div>
+            </div>
+        </div>
+    </div> <!--End book form modal-->   
+</div>
